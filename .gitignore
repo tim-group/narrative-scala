@@ -1,0 +1,15 @@
+.classpath
+.idea
+.project
+.settings
+/bin
+/out
+*.iml
+/target
+.worksheet
+/.git
+/project/project
+/project/target
+/build
+logs
+/project
