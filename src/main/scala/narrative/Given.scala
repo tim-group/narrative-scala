@@ -7,13 +7,10 @@ class Given[A](val actor: Actor[A]) {
     this
   }
 
-  def the = Given.the _
-  def and_the = Given.and_the _
+  def and_the = Given.the _
 
 }
 
 object Given {
   def the[T](actor: Actor[T]) = new Given(actor)
-
-  def and_the[T](actor: Actor[T]) = new Given(actor)
 }

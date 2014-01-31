@@ -9,13 +9,10 @@ class When[A](val actor: Actor[A]) {
 
   def and_to = attempts_to _
 
-  def the = When.the _
-  def and_the = When.and_the _
+  def and_the = When.the _
 
 }
 
 object When {
   def the[T](actor: Actor[T]) = new When(actor)
-
-  def and_the[T](actor: Actor[T]) = new When(actor)
 }
