@@ -36,28 +36,28 @@ class BasicArithmeticSpec extends FunSpec with ShouldMatchers {
   }
 
 
-  def press(keypress: Char): Action[Calculator] = {
-    new Action[Calculator] {
-      def performFor(actor: Actor[Calculator]) = actor.tool().press(keypress)
+  def press(keypress: Char): Action[Calculator, CalculatorActor] = {
+    new Action[Calculator, CalculatorActor] {
+      def performFor(actor: CalculatorActor) = actor.tool().press(keypress)
     }
   }
 
-  def the_displayed_value: Extractor[Calculator, String] = {
-    new Extractor[Calculator, String] {
-      def grabFor(actor: Actor[Calculator]) = actor.tool().read()
+  def the_displayed_value: Extractor[String, CalculatorActor] = {
+    new Extractor[String, CalculatorActor] {
+      def grabFor(actor: CalculatorActor) = actor.tool().read()
     }
   }
 
 }
 
 
-class CalculatorActor extends Actor[Calculator] {
+class CalculatorActor extends Actor[Calculator, CalculatorActor] {
 
   val calculator = new Calculator
 
   def tool() = calculator
 
-  def perform(action: Action[Calculator]) = action.performFor(this)
+  def perform(action: Action[Calculator, CalculatorActor]) = action.performFor(this)
 
-  def grabUsing[T](extractor: Extractor[Calculator, T]) = extractor.grabFor(this)
+  def grabUsing[T](extractor: Extractor[T, CalculatorActor]) = extractor.grabFor(this)
 }

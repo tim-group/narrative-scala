@@ -1,8 +1,8 @@
 package narrative
 
-class Then[A](val actor: Actor[A]) {
+class Then[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
-  def expects_that[T](expected: Extractor[A, T])(matcher: T => Unit): Then[A] = {
+  def expects_that[T](expected: Extractor[T, B])(matcher: T => Unit): Then[A, B] = {
     matcher(actor.grabUsing(expected))
     this
   }
@@ -14,5 +14,5 @@ class Then[A](val actor: Actor[A]) {
 }
 
 object Then {
-  def the[T](actor: Actor[T]) = new Then(actor)
+  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new Then(actor)
 }

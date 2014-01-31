@@ -1,8 +1,8 @@
 package narrative
 
-class When[A](val actor: Actor[A]) {
+class When[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
-  def attempts_to(action: Action[A]): When[A] = {
+  def attempts_to(action: Action[A, B]): When[A, B] = {
     actor.perform(action)
     this
   }
@@ -14,5 +14,5 @@ class When[A](val actor: Actor[A]) {
 }
 
 object When {
-  def the[T](actor: Actor[T]) = new When(actor)
+  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new When(actor)
 }

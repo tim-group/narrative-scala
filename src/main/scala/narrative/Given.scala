@@ -1,8 +1,8 @@
 package narrative
 
-class Given[A](val actor: Actor[A]) {
+class Given[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
-  def was_able_to(action: Action[A]): Given[A] = {
+  def was_able_to(action: Action[A, B]): Given[A, B] = {
     actor.perform(action)
     this
   }
@@ -12,5 +12,5 @@ class Given[A](val actor: Actor[A]) {
 }
 
 object Given {
-  def the[T](actor: Actor[T]) = new Given(actor)
+  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new Given(actor)
 }

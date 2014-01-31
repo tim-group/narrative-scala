@@ -1,6 +1,6 @@
 package narrative
 
-trait Action[A] {
+trait Action[A, B <: Actor[A, B]] {
 
-  def performFor(actor: Actor[A]): Unit
+  def performFor(actor: B): Unit
 }

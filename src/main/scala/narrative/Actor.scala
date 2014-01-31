@@ -1,12 +1,12 @@
 package narrative
 
-trait Actor[A] {
+trait Actor[A, B <: Actor[A, B]] {
 
   def tool(): A
 
-  def perform(action: Action[A]): Unit
+  def perform(action: Action[A, B]): Unit
 
-  def grabUsing[T](extractor: Extractor[A, T]): T
+  def grabUsing[T](extractor: Extractor[T, B]): T
 
 }
 
