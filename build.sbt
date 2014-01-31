@@ -1,4 +1,4 @@
-name := "narrative-in-scala"
+name := "narrative-scala"
  
 version := "0.1"
   
