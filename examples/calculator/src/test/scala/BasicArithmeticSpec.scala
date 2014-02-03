@@ -1,6 +1,6 @@
 
 import org.scalatest.{ShouldMatchers, FunSpec}
-import com.timgroup.narrative.test._
+import com.timgroup.test.narrative._
 
 class BasicArithmeticSpec extends FunSpec with ShouldMatchers {
 

@@ -1,4 +1,4 @@
-package com.timgroup.narrative.test
+package com.timgroup.test.narrative
 
 trait Actor[A, B <: Actor[A, B]] {
 
