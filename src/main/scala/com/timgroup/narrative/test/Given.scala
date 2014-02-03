@@ -1,4 +1,4 @@
-package narrative
+package com.timgroup.narrative.test
 
 class Given[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 

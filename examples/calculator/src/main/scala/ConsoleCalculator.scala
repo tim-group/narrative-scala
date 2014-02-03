@@ -1,4 +1,3 @@
-package examples
 
 object ConsoleCalculator {
 
