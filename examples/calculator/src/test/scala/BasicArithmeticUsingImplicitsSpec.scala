@@ -15,10 +15,10 @@ class BasicArithmeticWithImplicitsSpec extends FunSpec with ShouldMatchers {
                          .was_able_to(press('+'))
                          .was_able_to(press('2'))
 
+
       When.the(operator).attempts_to(press('='))
 
       Then.the(operator).expects_that(the_displayed_value)(_ should be("4"))
-                        .and_that(the_displayed_value)(_ should be ("5"))
     }
 
     it("can subtract two numbers") {
