@@ -7,6 +7,8 @@ class Given[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
     this
   }
 
+  def and_to = was_able_to _
+
   def and_the = Given.the _
 
 }
