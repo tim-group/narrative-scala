@@ -3,7 +3,12 @@ package com.timgroup.test.narrative
 class Given[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
   def was_able_to(action: Action[A, B]): Given[A, B] = {
-    actor.perform(action)
+    try {
+      actor.perform(action)
+    } catch {
+      case t: Throwable => throw new RuntimeException(t)
+    }
+
     this
   }
 
