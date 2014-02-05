@@ -1,5 +1,6 @@
 
-import org.scalatest.{ShouldMatchers, FunSpec}
+import org.scalatest.FunSpec
+import org.scalatest.matchers.ShouldMatchers
 import com.timgroup.test.narrative._
 import com.timgroup.test.narrative.Implicits._
 
