@@ -36,6 +36,6 @@ class BasicArithmeticWithImplicitsSpec extends FunSpec with ShouldMatchers {
   }
 
   def press(keypress: Char) = (_: CalculatorActor).tool().press(keypress)
-  def the_displayed_value   = (_: CalculatorActor).tool().read()
+  def the_displayed_value   = functionToExtractor((_: CalculatorActor).tool().read())
 }
 
