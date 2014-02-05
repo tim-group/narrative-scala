@@ -1,11 +1,10 @@
 package com.timgroup.test.narrative
 
-import org.scalatest.{ShouldMatchers, FunSpec}
+import org.scalatest.FunSpec
 import org.scalatest.mock.MockitoSugar
-import org.mockito.Mockito.{verify, times, when}
-import org.mockito.Mockito
+import org.mockito.Mockito.{verify, times, inOrder}
 
-class GivenSpec extends FunSpec with MockitoSugar with ShouldMatchers {
+class GivenSpec extends FunSpec with MockitoSugar {
 
   describe("Given:") {
     it("uses the actor to perform the action") {
@@ -40,28 +39,13 @@ class GivenSpec extends FunSpec with MockitoSugar with ShouldMatchers {
                       .was_able_to(thirdAction)
                       .and_to(fourthAction)
 
-      val order = Mockito.inOrder(actor)
+      val order = inOrder(actor)
 
       order.verify(actor).perform(firstAction)
       order.verify(actor).perform(secondAction)
       order.verify(actor).perform(thirdAction)
       order.verify(actor).perform(fourthAction)
 
-    }
-
-    it("can re-throw exceptions from actors as unchecked exceptions") {
-      val actor = mock[StringActor]
-      val action = mock[Action[String, StringActor]]
-      val throwable = new RuntimeException("Something Broke")
-
-      when(actor.perform(action)).thenThrow(throwable)
-
-      val thrown = intercept[RuntimeException] {
-        Given.the(actor).was_able_to(action)
-      }
-
-      thrown.getMessage should endWith("Something Broke")
-      thrown.getCause should be(throwable)
     }
    
   }
