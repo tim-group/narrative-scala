@@ -1,3 +1,5 @@
+package calculator
+
 import com.timgroup.test.narrative._
 
 class CalculatorActor extends Actor[Calculator, CalculatorActor] {

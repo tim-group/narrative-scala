@@ -1,3 +1,5 @@
+package calculator
+
 
 object ConsoleCalculator {
 
