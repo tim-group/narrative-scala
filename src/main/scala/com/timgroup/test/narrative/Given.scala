@@ -9,10 +9,10 @@ class Given[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
   def and_to = was_able_to _
 
-  def and_the = Given.the _
+  def and_the[T, U <: Actor[T, U]] = Given.the[T, U] _
 
 }
 
 object Given {
-  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new Given(actor)
+  def the[T, U <: Actor[T, U]](actor: Actor[T, U]) = new Given(actor)
 }

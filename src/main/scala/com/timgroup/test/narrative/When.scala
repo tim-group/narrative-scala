@@ -9,10 +9,9 @@ class When[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
   def and_to = attempts_to _
 
-  def and_the = When.the _
-
+  def and_the[T, U <: Actor[T, U]] = When.the[T, U] _
 }
 
 object When {
-  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new When(actor)
+  def the[T, U <: Actor[T, U]](actor: Actor[T, U]) = new When(actor)
 }
