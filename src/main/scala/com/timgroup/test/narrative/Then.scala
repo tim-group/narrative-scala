@@ -9,10 +9,10 @@ class Then[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
 
   def and_that = expects_that _
 
-  def and_the = Given.the _
+  def and_the[T, U <: Actor[T, U]] = Then.the[T, U] _
 
 }
 
 object Then {
-  def the[A, B <: Actor[A, B]](actor: Actor[A, B]) = new Then(actor)
+  def the[T, U <: Actor[T, U]](actor: Actor[T, U]) = new Then(actor)
 }
