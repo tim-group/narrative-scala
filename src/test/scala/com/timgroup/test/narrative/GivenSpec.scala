@@ -21,10 +21,13 @@ class GivenSpec extends FunSpec with MockitoSugar {
       val action = mock[Action[String, StringActor]]("first action")
       val otherAction = mock[Action[String, StringActor]]("second action")
 
-      Given.the(actor).was_able_to(action).and_to(otherAction)
+      Given.the(actor).was_able_to(action).was_able_to(otherAction)
 
-      verify(actor, times(1)).perform(action)
-      verify(actor, times(1)).perform(otherAction)
+      val order = inOrder(actor)
+
+      order.verify(actor).perform(action)
+      order.verify(actor).perform(otherAction)
+
     }
 
     it("can mix calls to was_able_to and to and_to") {
@@ -49,8 +52,4 @@ class GivenSpec extends FunSpec with MockitoSugar {
     }
    
   }
-
-
-
-  trait StringActor extends Actor[String, StringActor]
 }
