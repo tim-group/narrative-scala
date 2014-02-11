@@ -3,7 +3,7 @@
 //   * Bump to non-SNAPSHOT before a release
 //   * After successful release, `git tag v0.1.0; git push --tags` to reflect released code
 //   * Then bump this to next -SNAPSHOT version
-version := "0.1.1-SNAPSHOT"
+version := "0.1.1"
 
 // Uncomment to publish only to TIM Group Repo 
 //publishTo := Some("TIM Group Repo" at "http://repo.youdevise.com:8081/nexus/content/repositories/yd-release-candidates")
