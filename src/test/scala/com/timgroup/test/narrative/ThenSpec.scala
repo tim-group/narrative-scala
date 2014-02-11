@@ -49,5 +49,17 @@ class ThenSpec extends FunSpec with MockitoSugar with ShouldMatchers {
           .and_the(otherActor).expects_that(booleanExtractor)(_ should be(true))
 
     }
+
+    it("can chain calls to expect_that and and_that") {
+      val actor = mock[StringActor]
+
+      val substringExtractor = mock[Extractor[String, StringActor]]("substring extractor")
+
+      when(actor.grabUsing(substringExtractor)).thenReturn("substring")
+
+      Then.the(actor).expects_that(substringExtractor)(_ should startWith("sub"))
+                     .and_that(substringExtractor)(_ should endWith("string"))
+
+    }
   }
 }

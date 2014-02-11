@@ -7,7 +7,7 @@ class Then[A, B <: Actor[A, B]](val actor: Actor[A, B]) {
     this
   }
 
-  def and_that = expects_that _
+  def and_that[T] = expects_that[T] _
 
   def and_the[T, U <: Actor[T, U]] = Then.the[T, U] _
 
